@@ -1,0 +1,58 @@
+// common styles for tags or classes
+// animation effects
+@import './Variables.scss';
+
+@mixin button-basic {
+    border: 1px solid rgba(41,43,50,.1);
+    padding: 0.5rem 1rem;
+    border-radius: 200px;
+}
+
+@mixin nav_li_font {
+    display: flex;
+    color: $color-font-grey;
+    padding: 0 0.5rem;
+    font-size: toRem(13);
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    &:hover{
+        color: $color-green-blue;
+    }
+}
+
+@keyframes header-list-show{
+    0%{
+        height: 1rem;
+    }
+    100%{
+        height: 12rem;
+    }
+}
+@mixin show-medal($fromTop){
+    @keyframes show-medal{
+        0%{
+            top:0rem;
+            opacity: 0;
+        }
+        100%{
+            top: $fromTop;
+            opacity: 1;
+        }
+    }
+    animation: show-medal .5s ease-in-out forwards;
+}
+@mixin show-warning($fromTop){
+    @keyframes show-warning{
+        0%{
+            top:10rem;
+            opacity: 0;
+        }
+
+        100%{
+            top: $fromTop;
+            opacity: 1;
+        }
+    }
+    animation: show-warning .5s ease-in-out forwards;
+}

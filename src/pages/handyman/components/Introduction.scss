@@ -1,0 +1,36 @@
+@import '../../../common/commonStylesheet.scss';
+
+.introduction{
+  margin: 2rem 0;
+  &_container{
+    margin: 0 auto;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    h4{
+      text-align: center;
+    }
+    button{
+      margin: 2rem auto;
+      @include button-basic;
+      color: $color-green-blue;
+      background: #f6f8fd;
+    }
+    &_steps{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      li{
+        width: 10rem;
+        text-align: center;
+        img{
+          width: 8rem;
+        }
+        p{
+          font-size: 0.8rem;
+          color: $color-font-grey;
+        }
+      }
+    }
+  }
+}

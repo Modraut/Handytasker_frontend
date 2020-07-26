@@ -1,0 +1,51 @@
+@import '../../../common/commonStylesheet.scss';
+@import '../../../common/Variables.scss';
+
+.home_writers{
+  width: 100%;
+  min-width: 12rem;
+  height: 10rem;
+  margin: 0 auto;
+    >div{
+      margin-bottom: 0.5rem;
+      color: #333333;
+      div{
+        &:first-child{
+          float: right;
+          color: $color-grey-font;
+        }
+
+      }
+    }
+    section{
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      img{
+        display: block;
+        float: left;
+        border-radius: 50%;
+        width: 3rem;
+      }
+      >div{
+        padding: 0.3rem 0 0 3.5rem;
+        >div{
+          &:first-child{
+            float: right;
+            color: #42c02e;
+            position: relative;
+            top: 0.1rem;
+          }
+          &:last-child{
+            color: $color-grey-font;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+          }
+        }
+        h4{
+          color: #333333;
+          font-size: 1.05rem;
+        }
+
+      }
+    }
+}

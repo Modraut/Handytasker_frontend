@@ -1,0 +1,199 @@
+@import './../../commonStylesheet.scss';
+@import './../../Variables.scss';
+
+.login{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.4);
+    &_content{
+        position: absolute;
+        left: 50%;
+        width: 20rem;
+        // height: 30rem;
+        border-radius: 5px;
+        margin-left: -10rem;
+        background: #fff;
+        @include show-medal(4rem);
+        &_header{
+            padding: 1rem 1rem;
+            line-height: 1.5rem;
+            >h2{
+                text-align: center;
+                padding: 0 1.5rem;
+            }
+            span{
+                position: relative;
+                top: toRem(-2);
+                left: toRem(-2);
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                &:hover{
+                    color: #000;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+        }
+        &_main{
+            padding: 0 1rem;
+            &_input{
+                padding-bottom: 1rem;
+                >label{
+                    display: block;
+                    padding-bottom: 0.5rem;
+                }
+                >input{
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 1rem;
+                    padding: 1.2rem 0.7rem;
+                    border: 1px solid $color-grey-input-border;
+                    border-radius: 5px;
+                    &::placeholder{
+                        color: $color-grey-input-placeholder;
+                    }
+                    &:hover,&:focus{
+                        border-color: $color-blue-green;
+                    }
+                }
+            }
+            &_forgotPassword{
+                overflow: hidden;
+                padding-bottom: 1rem;
+                cursor: pointer;
+                >p{
+                    float: right;
+                    color: $color-blue-green;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            >button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 2.5rem;
+                border-radius: $border-radius-header-button;
+                border: none;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                span{
+                    padding-left: 0.5rem;
+                }
+                &:nth-of-type(1){
+                    background: $color-green;
+                    color: #fff;
+                    font-weight: bold;
+                }
+                &:nth-of-type(2){
+                    svg{
+                        font-size: 1.2rem;
+                    }
+                    background: #1877f2;
+                    color: #fff;
+                    font-weight: bold;
+                }
+                &:nth-of-type(3){
+                    background: #fff;
+                    margin-bottom: 1rem;
+                    border: 1px solid $color-grey-input-border;
+                    // img{
+                    //     margin-top: 0.1rem;
+                    // }
+                }
+            }
+            &_signUpWith{
+                margin: 1rem 0;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                p{
+                    position: relative;
+                    text-align: center;
+                    color: rgb(84, 90, 119); 
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        left: 0%;
+                        top: 50%;
+                        width: 30%;
+                        border-top: 1px solid $color-grey-input-border;
+                    }
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        right: 0%;
+                        top: 50%;
+                        width: 30%;
+                        border-top: 1px solid $color-grey-input-border;
+                    }
+                }
+            }
+            &_signUp{
+                border-top: 1px solid $color-grey-input-border;
+                padding-top: 0.7rem;
+                margin-bottom: 1.5rem;
+                span{
+                    float: right;
+                    color: $color-blue-green;
+                    cursor: pointer;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    &_status{
+        display: none;
+        &-fail{
+            display: flex;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            justify-content: center;
+            >div{
+                position: absolute;
+                width: 25rem;
+                height: 9rem;
+                background: #fff;
+                border-radius: 5px;
+                text-align: center;
+                @include show-warning(15rem);
+                h3{
+                    margin-top: 1rem;
+                    font-weight: bold;
+                }
+                p{
+                    text-align: left;
+                    padding: 1.3rem 1rem;
+                }
+                button{
+                    margin: 0 auto;
+                    width: 10rem;
+                    height: 2.5rem;
+                    border-radius: $border-radius-header-button;
+                    border: none;
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                    background: $color-green;
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

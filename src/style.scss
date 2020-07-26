@@ -1,0 +1,11 @@
+@import './common/commonStylesheet.scss';
+@import './common/Variables.scss';
+
+main{
+	margin-top: 1rem;
+	min-width: 700px;
+	width: $width-middle;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 1rem;
+}

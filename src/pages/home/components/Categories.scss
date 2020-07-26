@@ -1,0 +1,49 @@
+@import '../../../common/commonStylesheet.scss';
+
+.categories{
+  &_container{
+    padding: 2rem 0;
+    max-width: 60rem;
+    margin: 0 auto;
+    h2{
+      font-size: 2rem;
+      font-weight: bolder;
+      margin-bottom: 1rem;
+      color: $color-font-black;
+    }
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      li{
+        width: 7rem;
+        height: 9rem;
+        >div{
+          width:6rem;
+          height: 6rem;
+          border-radius: 50%;
+          background: $color-grey-button;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+          &:hover{
+            transition: transform 0.3s ease-in-out;
+            background: $color-button-pink;
+            transform: scale(1.05);  //good!!
+          }
+          path{
+            fill: white;
+          }
+        }
+        p{
+          color: #292B32;
+          font-size: 0.9rem;
+          padding-top: 0.5rem;
+          text-align: center;
+        }
+      }
+
+    }
+  }
+}

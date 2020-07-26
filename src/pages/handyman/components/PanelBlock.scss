@@ -1,0 +1,78 @@
+@import '../../../common/commonStylesheet.scss';
+
+.home_panel{
+   width: 100%;
+   height: 38rem;
+   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../pic/homepage-handyman.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   &_container{
+      position: relative;
+      max-width: 55rem;
+      margin: 0 auto;
+      height: 100%;
+      &_brief{
+         color: white;
+         width: 32rem;
+         position: absolute;
+         top: 7rem;
+         h1{
+            font-size: 3rem;
+            font-weight: bolder;
+            letter-spacing: -0.25px;
+         }
+         h2{
+            font-size: 1.5rem;
+            letter-spacing: -0.25px;
+            margin-top: 1.5rem;
+         }
+         &_rating{
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            span{
+               margin-left: 1.5rem;
+            }
+         }
+      }
+      &_whiteboard{
+         width: 17rem;
+         padding: 1rem;
+         background: white;
+         border-radius: 5px;
+         position: absolute;
+         top: 4rem;
+         right: 0;
+         h2{
+            font-size: 1.5rem;
+            margin: 0 0.5rem 2rem;
+         }
+         ul{
+            margin-bottom: 1rem;
+            >li{
+            line-height: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: $color-font-grey;
+               span{
+                  margin-left: 0.5rem;
+               }
+            }
+         }
+         button{
+            background: $color-button-pink;
+            border: none;
+            width: 100%;
+            height: 2.5rem;
+            border-radius: 200px;
+            color: white;
+            font-weight: bold;
+         }
+         >p{
+            text-align: center;
+            color: $color-font-grey;
+            margin-top: 0.5rem;
+         }
+      }
+   }
+
+}

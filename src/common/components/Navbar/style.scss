@@ -1,0 +1,114 @@
+// @import './../../Variables.scss';
+@import './../../commonStylesheet.scss';
+
+
+body{
+    font-size: 14px;
+    height: 100rem;
+    background: #f6f8fd;
+    // position: relative;
+    .header{
+        z-index: 1;
+        transition: background-color 0.5s ease-in-out;
+        width: 100%;
+        background: white;
+        border-bottom: 1px solid #ccc;
+        position: fixed;
+        top: 0;
+        height: 3.5rem;
+        // @media (min-width: $width-navbar ) {
+        //     display: flex;
+        //     justify-content: center;
+        // }
+        &_navbar{
+            width: 60rem;
+            height: 100%;
+            margin: 0 auto;
+            &_logo{
+                width: 8rem;
+                height: 3.5rem;
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin-right: 1rem;
+                float: left;
+                svg>g{
+                    fill: $color-green-blue;
+                }
+                // background: url('../../pic/logoPic.png');
+                // img{
+                //     height: 1.5rem;
+                // }
+            }
+            &_nav{
+                display: flex;
+                align-items: center;
+                padding: 0 1rem;
+                height: 100%;
+                border-left: 1px solid rgba(0,0,0,.1);
+                li{
+                    @include nav_li_font;
+                    &:not(.header_navbar_nav_logo):hover{
+                        border-top: 3px solid rgb(198, 190, 179);
+                        border-bottom: 3px solid transparent;
+                    }
+                    button{
+                        @include button-basic;
+                        color: white;
+                        background: $color-button-pink;
+                        font-size: toRem(11);
+                    }
+                }
+            }
+            &_user{
+                // color: white;
+                float: right;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                li{
+                    @include nav_li_font;
+                    button{
+                        @include button-basic;
+                        color: $color-green-blue;
+                        background: #f6f8fd;
+                        font-size: toRem(11);
+                    }
+                }
+            }
+        }
+        &.transparent{
+            transition: all 0.5s ease-in-out;
+            background: none;
+            border: none;
+            li{
+                color: white;
+                &:hover{
+                    color: rgb(198, 190, 179);
+                }
+            }
+            .header_navbar_user>li>button{
+                color: white;
+                background: none;
+                border: 1px solid white;
+                &:hover{
+                    transition: all 0.5s ease-in-out;
+                    background: white;
+                    border: 1px solid $color-green-blue;
+                    color: $color-green-blue;;
+                }
+            }
+            .header_navbar_logo_svg{
+                fill: white;
+            }
+        }
+    }
+    main{
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+    }
+}
