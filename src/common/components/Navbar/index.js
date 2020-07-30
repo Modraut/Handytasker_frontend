@@ -26,8 +26,6 @@ class Navbar extends React.Component{
         window.addEventListener('scroll', this.handleTransparency);
         this.header = document.querySelector('.header');
         this.header.classList.add("transparent")
-        this.currentPath = this.props.location.pathname;
-        console.log(this.currentPath);
     }
     handleTransparency(){
         let distanceFromTop = window.scrollY;
@@ -66,8 +64,11 @@ class Navbar extends React.Component{
         </g>
         </svg>
     )
+
     render(){
         const Logo = this.logoPic;
+        // this.currentPath = this.props.location.pathname;
+        this.currentPath = window.location.pathname;
         return(
             <header className="header">
                 <nav  className="header_navbar">
@@ -103,4 +104,5 @@ class Navbar extends React.Component{
 
 // })
 
-export default withRouter(Navbar);
+// export default withRouter(Navbar);
+export default Navbar;

@@ -59,6 +59,7 @@ class TaskMarquee extends React.Component {
             }
         ]
         const Star = this.star;
+        this.currentPath = window.location.pathname;
         return(
             <div className="marquee">
                 <div className="marquee_header">
@@ -122,7 +123,7 @@ class TaskMarquee extends React.Component {
                     </ul>
                 </div>
                 <div className="marquee_button">
-                    <Link>
+                    <Link to={this.currectPath==="/"?"/post-task": this.currentPath+"post-task"}>
                         <button>Get started now</button>
                     </Link>
                 </div>

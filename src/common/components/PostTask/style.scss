@@ -1,0 +1,291 @@
+@import './../../commonStylesheet.scss';
+@keyframes progress_bar_step1{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 33%;
+    }
+}
+@keyframes progress_bar_step2{
+    0%{
+        width: 33%;
+    }
+    100%{
+        width: 66%;
+    }
+}
+@keyframes progress_bar_step3{
+    0%{
+        width: 66%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+.postTask{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.4);
+    color: $color-font-black;
+    &_content{
+        position: absolute;
+        left: 50%;
+        width: 30rem;
+        height: 30rem;
+        border-radius: 5px;
+        transform: translateX(-50%);
+        background: #fff;
+        top: 4rem;
+        &.intro{
+            @include show-medal(4rem);  // click button and show the postTask page
+        }
+        &_header{
+            @include header-with-cross-sign // all steps use the same header style
+            &_bar{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: #f0f0f0;
+                >div{
+                    height: 100%;
+                    background: $color-green;
+                    &.step1{
+                        animation: progress_bar_step1 0.5s ease-in-out forwards;
+                    }
+                    &.step2{
+                        animation: progress_bar_step2 0.5s ease-in-out forwards;
+                    }
+                    &.step3{
+                        animation: progress_bar_step3 0.5s ease-in-out forwards;
+                    }
+                }
+            }
+        }
+        &_main{
+            &_intro{
+                text-align: center;
+                padding: 3rem 1rem;
+                height: 23rem;
+                box-sizing: border-box;
+                h3{
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                h4{
+                    font-size: 0.9rem;
+                }
+            }
+            &_step1{
+                padding: 1rem 1rem;
+                height: 23rem;
+                box-sizing: border-box;
+                section{
+                    padding-bottom: 2rem;
+                    h3{
+                        font-size: 1rem;
+                        font-weight: 300;
+                        margin-bottom: 0.5rem;
+                    }
+                    p{
+                        font-size: 0.8rem;
+                        margin-bottom: 1rem;
+                    }
+                    input{
+                        width: 100%;
+                        box-sizing: border-box;
+                        height: 2.5rem;
+                        padding: 0.5rem;
+                    }
+                    textarea{
+                        height: 8rem;
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+            &_step2{
+                padding: 1rem 1rem;
+                height: 23rem;
+                box-sizing: border-box;
+                section{
+                    margin-bottom: 1rem;
+                    h3{
+                        font-size: 1.05rem;
+                        margin-bottom: 1rem;
+                    }
+                    &:first-of-type{   //where
+                        >div{
+                            height: 8rem;
+                            margin-bottom: 1.5rem;
+                            >div{
+                                box-sizing: border-box;
+                                display: inline-block;
+                                width: 13.5rem;
+                                height: 100%;
+                                cursor: pointer;
+                                background: $color-grey-1;
+                                &:first-child{
+                                    margin-right: 1rem;
+                                    float: left;
+                                }
+                                >div{
+                                    padding: 1rem 0.5rem;
+                                    display: flex;
+                                    align-items: center;
+                                    input{
+                                        box-sizing: border-box;
+                                        margin: 0 0.5rem 0 0;
+                                        zoom: 1.5;
+                                    }
+                                    &:-moz-placeholder{
+                                        color: $color-grey-input-placeholder;
+                                    }
+                                }
+                                p{
+                                    padding: 0 0.5rem;
+                                    line-height: 1.2rem;
+                                }
+                            }
+                        }
+                        >input{
+                            height: 2rem;
+                            border-radius: 4px;
+                            border: 1px solid $color-grey-input-border;
+                        }
+                    }
+                    &:last-of-type{
+                        >input{
+                            width: 100%;
+                            height: 2rem;
+                            border: 1px solid $color-grey-input-border;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+            &_step3{
+                position: relative;
+                padding: 1rem 1rem;
+                height: 23rem;
+                box-sizing: border-box;
+                &_help{
+                    float: right;
+                    color: $color-blue-green;
+                    >span{
+                        margin-left: 0.3rem;
+                        display: inline-block;
+                        border: 1px solid $color-blue-green;
+                        border-radius: 50%;
+                        width: 0.75rem;
+                        height: 0.75rem;
+                        text-align: center;
+                    }
+                }
+                h3{
+                    font-size: 1.05rem;
+                    margin-bottom: 1rem;
+                }
+                p{
+                    font-size: 0.8rem;
+                    margin-bottom: 1rem;
+                }
+                &_total{
+                    >div{
+                        display: inline-block;
+                        cursor: pointer;
+                        >label{
+                            padding: 0 1rem 0 0.5rem;
+                            letter-spacing: 0.25px;
+                            font-size: 1rem;
+                        }
+                    }
+                    margin-bottom: 1rem;
+                }
+                &_amount{
+                    height: 2rem;
+                    border: 1px solid $color-grey-input-border;
+                    font-size: 1rem;
+                }
+                &_budget{
+                    position: absolute;
+                    bottom: 0.5rem;
+                    left: 0;
+                    right: 0;
+                    background: $color-blue-green;
+                    color: white;
+                    // width: 100%;
+                    height: 5rem;
+                    box-sizing: border-box;
+                    &_container{
+                        padding: 1.5rem;
+                        >h4{
+                            font-size: 1.05rem;
+                            text-transform: uppercase;
+                            margin-bottom: 0.5rem;
+                        }
+                        p{
+                            font-size: 0.9rem;
+                        }
+                        span{
+                            float: right;
+                            font-size: 2rem;
+                            &::before{
+                                font-size: 1rem;
+                                line-height: 2rem;
+                                content: "$";
+                                padding-right: 0.5rem;
+                                position: relative;
+                                top: -0.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &_footer-oneButton{ // when there is only one button
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+            height: 3rem;
+            button{
+                @include button-basic;
+                background: $color-green;
+                width: 15rem;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                height: 2.5rem;
+            }
+        }
+        &_footer-twoButtons{ // when there are two buttons
+            box-sizing: border-box;
+            width: 100%;
+            height: 3rem;
+            button{
+                @include button-basic;
+                width: 12rem;
+                font-weight: bold;
+                cursor: pointer;
+                height: 2.5rem;
+                &:first-of-type{
+                    background: $color-grey-1;
+                    color: $color-blue-green;
+                    margin: auto 2rem;
+                }
+                &:last-of-type{
+                    background: $color-green;
+                    color: white;
+                }
+            }
+        }
+    }
+}

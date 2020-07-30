@@ -8,6 +8,27 @@
     border-radius: 200px;
 }
 
+@mixin header-with-cross-sign {
+    padding: 1.5rem 1rem;
+    position: relative;
+    h2{
+        text-align: center;
+        font-size: 1.3rem;
+        color: $color-font-black;
+        span{
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            &:hover{
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
 @mixin nav_li_font {
     display: flex;
     color: $color-font-grey;
