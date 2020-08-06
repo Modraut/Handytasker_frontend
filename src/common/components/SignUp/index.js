@@ -22,35 +22,33 @@ class SignUp extends React.Component{
             invalidEmail: true,
             invalidPassword: true,
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.getPaswordScore = this.getPaswordScore.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
 
         this.handleInputChangeEmail = this.handleInputChangeEmail.bind(this);
         this.handleInputChangePassword = this.handleInputChangePassword.bind(this);
-        this.getPaswordScore = this.getPaswordScore.bind(this);
+        this.getPasswordScore = this.getPasswordScore.bind(this);
         this.validateEmail = this.validateEmail.bind(this);
         this.validatePassword = this.validatePassword.bind(this);
     }
 
-    getPaswordScore(score){  // think about how to use it
+    getPasswordScore(score){  // think about how to use it
         this.setState({
             passwordScore:score
         })
     }
-    handleSignUp = async ()=>{
-        e.preventDefault();
-        if(!window.localStorage){
-            return false
-        }else{
-            const storage = window.localStorage;
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhOGQ3ZmRlMWJjNDNiOTRiOTM0NzkiLCJlbWFpbCI6ImNoYWRtb2RyZWRAZ21haWwuY29tIiwiaWF0IjoxNTk2NjI0MjU1LCJleHAiOjE1OTY2MjQzMTV9.qS-x1RyBHiVrBZ6-ei_OADLe2uXDZw0mdQ0kRbTVCtc";
-            storage.setItem('token',token);
-            this.setState({
-                redirect: "/"
-            })
-        }
-    }
+    // handleSignUp = async (e)=>{
+    //     e.preventDefault();
+    //     if(!window.localStorage){
+    //         return false
+    //     }else{
+    //         const storage = window.localStorage;
+    //         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjJhOGQ3ZmRlMWJjNDNiOTRiOTM0NzkiLCJlbWFpbCI6ImNoYWRtb2RyZWRAZ21haWwuY29tIiwiaWF0IjoxNTk2NjI0MjU1LCJleHAiOjE1OTY2MjQzMTV9.qS-x1RyBHiVrBZ6-ei_OADLe2uXDZw0mdQ0kRbTVCtc';
+    //         storage.setItem('token',token);
+    //         this.setState({
+    //             redirect: "/"
+    //         })
+    //     }
+    // }
     // *********************
     handleInputChangeEmail(e){
         this.setState({
@@ -66,19 +64,19 @@ class SignUp extends React.Component{
             this.state.invalidCredential && this.validatePassword()
         })
     }
-    getPaswordScore(score){
+    getPasswordScore(score){
         this.setState({
             passwordScore:score
         },()=>{})
     }
-
-    handleLogin(e){
+    handleSignUp(e){
         e.preventDefault();
         const { email, password, invalidEmail, invalidPassword } = this.state;
         if(!invalidEmail && !invalidPassword){
-            userAPI.login({email, password}).then(data=>{
-                window.localStorage.setItem('email',data.email);
-                window.localStorage.setItem('password',data.password);
+            const userCredential = { email, password };
+            userAPI.signUp(userCredential).then(data=>{
+                // window.localStorage.setItem('token',data.token);
+                console.log(data.token);
             }).catch(error=>{
                 this.setState({
                     incorrectCredential: true  // login failed due to wrong credential
@@ -105,7 +103,7 @@ class SignUp extends React.Component{
     }
     validatePassword(){   // password can't be ''
         const { password } =  this.state;
-        if(password===''){
+        if(password.length>=6){
             this.setState({
                 invalidPassword: true
             },()=>{})
@@ -144,8 +142,8 @@ class SignUp extends React.Component{
                                 type="text" id="password" placeholder="Password" autoComplete="on"
                                 onChange={this.handleInputChangePassword} value={password} data-test="password"
                             />
-                            {this.state.invalidCredential && this.state.invalidPassword && <p data-test="invalidPassword">please enter your password</p> }
-                            <PasswordStrengthBar className="signUp_content_main_input_strength" password={password} onChangeScore={(score)=>{this.getPaswordScore(score)}} />
+                            {this.state.invalidCredential && this.state.invalidPassword && <p data-test="invalidPassword">please enter a minimum of 6 characters</p> }
+                            <PasswordStrengthBar className="signUp_content_main_input_strength" password={password} onChangeScore={(score)=>{this.getPasswordScore(score)}} />
                         </div>
                         <button className="signUp_content_main_join" type="submit" onClick={this.handleSignUp}>Join Handytasker</button>
                         <div className="signUp_content_main_signUpWith">

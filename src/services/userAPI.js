@@ -26,7 +26,7 @@ const userAPI = {
     const url = userCredentialsURL + "/sign-up";
     try{
       const res = await axios.post(url, userCredential);
-      return res.data.token;
+      return res.data;
     } catch(e){
       console.log(e);
     }

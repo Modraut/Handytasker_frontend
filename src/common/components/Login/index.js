@@ -48,7 +48,7 @@ class Login extends React.Component{
         })
     }
 
-    handleLogin(e){
+    handleLogin(e){   // should async?
         e.preventDefault();
         const { email, password, invalidEmail, invalidPassword } = this.state;
         if(!invalidEmail && !invalidPassword){
