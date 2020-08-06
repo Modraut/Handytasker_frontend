@@ -9,13 +9,21 @@
 }
 
 @mixin header-with-cross-sign {
-    padding: 1.5rem 1rem;
     position: relative;
-    h2{
-        text-align: center;
-        font-size: 1.3rem;
-        color: $color-font-black;
+    box-sizing: border-box;
+    height: 4rem;
+    >div:first-of-type{
+        height: 4rem;
+        h2{
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-size: 1.3rem;
+            color: $color-font-black;
+        }
         span{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             color: #aaaaaa;
             float: right;
             font-size: 28px;

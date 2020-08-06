@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
@@ -9,23 +9,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faPenNib, faCompass, faFileDownload, faGem, faBars } from '@fortawesome/free-solid-svg-icons';
 // import logoPic from "../../pic/navbar_logo.png";
 import { getReturnPath } from '../../common';
-// import {LogoPic as Logo} from "../../pic/logo.svg"
+import defaultAvatar from "./pic/default.jpg";
 
-class Navbar extends React.Component{
+class Navbar extends Component{
     constructor(){
         super();
         this.state = {
-            listFocus: false,
-            searchFocus: false
+            login: false,
         }
-        this.toggleListFocus = this.toggleListFocus.bind(this);
         this.handleTransparency = this.handleTransparency.bind(this);
 
     }
+    // componentWillMount(){
+    //     const storage = window.localStorage;
+    //     const token = storage.getItem('token');
+    //     if(token){
+    //         this.setState({
+    //             login: true
+    //         })
+    //     }
+    // }
     componentDidMount(){
-        window.addEventListener('scroll', this.handleTransparency);
-        this.header = document.querySelector('.header');
-        this.header.classList.add("transparent")
+        if(this.state.login===false){
+            window.addEventListener('scroll', this.handleTransparency);
+            this.header = document.querySelector('.header');
+            this.header.classList.add("transparent")
+        }
     }
     handleTransparency(){
         let distanceFromTop = window.scrollY;
@@ -33,17 +42,6 @@ class Navbar extends React.Component{
             this.header.classList.add("transparent")
         }else{
             this.header.classList.remove("transparent")
-        }
-    }
-    toggleListFocus(){
-        if(this.state.listFocus){
-            this.setState({
-                listFocus: false
-            })
-        }else{
-            this.setState({
-                listFocus: true
-            })
         }
     }
     logoPic = ()=>(
@@ -75,17 +73,38 @@ class Navbar extends React.Component{
                     <Link to="./" className="header_navbar_logo">
                         <Logo />
                     </Link>
-                    <ul className="header_navbar_user">
-                        <li><Link to={this.currentPath==="/"? "/sign-up": this.currentPath+"sign-up"}>Sign up</Link></li>
-                        <li><Link to={this.currentPath==="/"? "/login": this.currentPath+"login"}>Log in</Link></li>
-                        <li><button>Become a tasker</button></li>
-                    </ul>
-                    <ul className="header_navbar_nav">
-                        <li className="header_navbar_nav_logo"><button>Post a task</button></li>
-                        <li>Categories</li>
-                        <li>Browse tasks</li>
-                        <li>How it works</li>
-                    </ul>
+                    {this.state.login===false &&
+                    // navbar for visitor (not logged in)
+                        <Fragment>
+                            <ul className="header_navbar_user">
+                                <li><Link to={this.currentPath==="/"? "/sign-up": this.currentPath+"sign-up"}>Sign up</Link></li>
+                                <li><Link to={this.currentPath==="/"? "/login": this.currentPath+"login"}>Log in</Link></li>
+                                <li><button>Become a tasker</button></li>
+                            </ul>
+                            <ul className="header_navbar_nav">
+                                <li className="header_navbar_nav_logo"><button  className="visitor">Post a task</button></li>
+                                <li><Link to="/">Categories</Link></li>
+                                <li><Link to="/">Browse tasks</Link></li>
+                                <li><Link to="/">How it works</Link></li>
+                            </ul>
+                        </Fragment>
+                    }
+                    {this.state.login===true &&
+                    // navbar for user (logged in)
+                        <Fragment>
+                            <ul className="header_navbar_user">
+                                <li><Link to="/">Help</Link></li>
+                                <li><Link to="/">Notifications</Link></li>
+                                <li><Link to="/">Messages</Link></li>
+                                <li><Link><img src={defaultAvatar} alt="avatar" /></Link></li>
+                            </ul>
+                            <ul className="header_navbar_nav">
+                                <li className="header_navbar_nav_logo"><button className="loggedin">Post a task</button></li>
+                                <li><Link to="/">Browse tasks</Link></li>
+                                <li><Link to="/">My tasks</Link></li>
+                            </ul>
+                        </Fragment>
+                    }
                 </nav>
             </header>
         )

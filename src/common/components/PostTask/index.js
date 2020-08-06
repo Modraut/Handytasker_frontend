@@ -13,24 +13,25 @@ class PostTask extends Component{
         super();
         this.state = {
             page: 0,
+            what: "",
+            detail: "",
             inPerson: true,
             suburb: "", 
+            when: "",
             total: true,
-
+            amount: 0,
         }
         this.nextStep = this.nextStep.bind(this);
         this.lastStep = this.lastStep.bind(this);
-    }
+        this.handleInputChange = this.handleInputChange.bind(this);
 
-    header = (title,step) => (
-        <div className="postTask_content_header">
-            <h2>
-                {title}
-                <span onClick={()=>this.props.history.push(getReturnPath())}>&times;</span>
-            </h2>
-            {step!=="intro" && <div className="postTask_content_header_bar"><div className={`${step}`}></div></div>}
-        </div>
-    )
+    }
+    
+    handleInputChange(e){
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
     lastStep(){
         this.setState({
             page: this.state.page-1
@@ -44,21 +45,28 @@ class PostTask extends Component{
     setInPerson(state){
         this.setState({
             inPerson: state
-        })
+        },()=>{})
     }
     setTotal(state){
         this.setState({
             total: state
-        })
+        },()=>{})
     }
     
     render(){
         const page= this.state.page;
         return(
             <div className="postTask">
+                <form className="postTask_content intro">
+                    <div className="postTask_content_header">
+                        <div>
+                            <h2>this is</h2>
+                            <span onClick={()=>this.props.history.push(getReturnPath())}>&times;</span>
+                        </div>
+                        {this.state.page!==0 && <div className="postTask_content_header_bar"><div className={`step${this.state.page}`}></div></div>}
+                    </div>
                 {page===0 &&
-                    <form className="postTask_content intro">
-                        {this.header("","intro")}
+                    <Fragment>
                         <div className="postTask_content_main_intro">
                             <img src="https://www.airtasker.com/images/taylor/on-boarding.png" />
                             <h3>Start getting offers in no time</h3>
@@ -67,31 +75,29 @@ class PostTask extends Component{
                         <div className="postTask_content_footer-oneButton">
                             <button onClick={this.nextStep}>Next</button>
                         </div>
-                    </form>
+                    </Fragment>
                 }
                 {page===1 &&
-                    <form className="postTask_content">
-                        {this.header("Tell us what you need done?","step1")}
+                    <Fragment>
                         <div className="postTask_content_main_step1">
                         <section>
                             <h3>What do you need done?</h3>
                             <p>This'll be the title of your task - e.g. Help move my sofa</p>
-                            <input type="text"></input>
+                            <input type="text" onChange={this.handleInputChange} id="what"></input>
                         </section>
                         <section>
                             <h3>What are the details?</h3>
                             <p>Be as specific as you can about what needs doing</p>
-                            <textarea></textarea>
+                            <textarea onChange={this.handleInputChange} id="detail"></textarea>
                         </section>
                         </div>
                         <div className="postTask_content_footer-oneButton">
                             <button onClick={this.nextStep}>Next</button>
                         </div>
-                    </form>
+                    </Fragment>
                 }
                 {page===2 &&
-                    <form className="postTask_content">
-                        {this.header("Say where & when","step2")}
+                    <Fragment>
                         <div className="postTask_content_main_step2">
                             <section>
                                 <h3>Where do you need it done?</h3>
@@ -112,22 +118,21 @@ class PostTask extends Component{
                                         <p>Select this if the Tasker can do it from home</p>
                                     </div>
                                 </div>
-                                <input placeholder="Enter a suburb" />
+                                <input placeholder="Enter a suburb" onChange={this.handleInputChange} id="suburb"/>
                             </section>
                             <section>
                                 <h3>When do you need it done?</h3>
-                                <input type="date" />
+                                <input type="date" onChange={this.handleInputChange} id="when" />
                             </section>
                         </div>
                         <div className="postTask_content_footer-twoButtons">
                             <button onClick={this.lastStep}>Back</button>
                             <button onClick={this.nextStep}>Next</button>
                         </div>
-                    </form>
+                    </Fragment>
                 }
                 {page===3 &&
-                    <form className="postTask_content">
-                        {this.header("Suggest how much","step3")}
+                    <Fragment>
                         <div className="postTask_content_main_step3">
                             <div className="postTask_content_main_step3_help">
                                 Want help?
@@ -145,10 +150,10 @@ class PostTask extends Component{
                                     <label>Hourly rate</label>
                                 </div>
                             </div>
-                            <input type="text" className="postTask_content_main_step3_amount"/>
+                            <input type="number" className="postTask_content_main_step3_amount" onChange={this.handleInputChange} id="amount"/>
                             <div className="postTask_content_main_step3_budget">
                                 <div className="postTask_content_main_step3_budget_container">
-                                    <span>45</span>
+                                    <span>{this.state.amount}</span>
                                     <h4>estimated budget</h4>
                                     <p>Final payment will be agreed later</p>
                                 </div>
@@ -158,28 +163,9 @@ class PostTask extends Component{
                             <button onClick={this.lastStep}>Back</button>
                             <button onClick={this.nextStep}>Get quotes</button>
                         </div>
-                    </form>
+                    </Fragment>
                 }
-
-                    {/* <div className="postTask_content_step1_header">
-                        <span>&times;</span>
-                        <h2>Tell us what you need done</h2>
-                    </div>
-                    <div className="postTask_content_step1_main">
-                        <section>
-                            <h3>What do you need done?</h3>
-                            <p>This'll be the title of your task - e.g. Help move my sofa</p>
-                            <input type="text"></input>
-                        </section>
-                        <section>
-                            <h3>What are the details?</h3>
-                            <p>Be as specific as you can about what needs doing</p>
-                            <input type="textarea"></input>
-                        </section>
-                    </div>
-                    <div className="postTask_content_step1_footer">
-                        <button>Next</button>
-                    </div> */}
+                </form>
             </div>
         )
     }

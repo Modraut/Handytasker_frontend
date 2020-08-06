@@ -17,6 +17,19 @@ const userAPI = {
     } catch(e){
       console.log(e);
     }
+  },
+  /*
+  @param { email,password }
+  @return jwt token at res.data.token
+  */
+  signUp: async (userCredential)=>{
+    const url = userCredentialsURL + "/sign-up";
+    try{
+      const res = await axios.post(url, userCredential);
+      return res.data.token;
+    } catch(e){
+      console.log(e);
+    }
   }
 }
 

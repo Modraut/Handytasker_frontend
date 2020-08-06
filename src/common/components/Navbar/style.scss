@@ -16,14 +16,13 @@ body{
         position: fixed;
         top: 0;
         height: 3.5rem;
-        // @media (min-width: $width-navbar ) {
-        //     display: flex;
-        //     justify-content: center;
-        // }
         &_navbar{
             width: 60rem;
             height: 100%;
             margin: 0 auto;
+            li>a{
+                font-size: 1rem;
+            }
             &_logo{
                 width: 8rem;
                 height: 3.5rem;
@@ -34,10 +33,6 @@ body{
                 svg>g{
                     fill: $color-green-blue;
                 }
-                // background: url('../../pic/logoPic.png');
-                // img{
-                //     height: 1.5rem;
-                // }
             }
             &_nav{
                 display: flex;
@@ -51,11 +46,20 @@ body{
                         border-top: 3px solid rgb(198, 190, 179);
                         border-bottom: 3px solid transparent;
                     }
-                    button{
-                        @include button-basic;
+                    >button{
                         color: white;
                         background: $color-button-pink;
-                        font-size: toRem(11);
+                        &.visitor{
+                            @include button-basic;
+                            font-size: toRem(11);
+                        }
+                        &.loggedin{
+                            border: 1px solid rgba(41,43,50,.1);
+                            border-radius: 200px;
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                            padding: 0.3rem 1rem;
+                        }
                     }
                 }
             }
@@ -72,6 +76,11 @@ body{
                         color: $color-green-blue;
                         background: #f6f8fd;
                         font-size: toRem(11);
+                    } // for become a tasker button as visitor
+                    img{
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 50%;
                     }
                 }
             }

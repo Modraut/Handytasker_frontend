@@ -13,12 +13,12 @@ class Login extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            redirect: null,
             email: '',
             password: '',
             invalidCredential: false,  //failure due to credential in wrong format
             invalidEmail: true,
             invalidPassword: true,
-            passwordScore: 0,
             incorrectCredential: false,   // failure due to incorrect credential
         }
         this.handleInputChangeEmail = this.handleInputChangeEmail.bind(this);
@@ -27,7 +27,6 @@ class Login extends React.Component{
         this.handleLogin = this.handleLogin.bind(this);
         this.validateEmail = this.validateEmail.bind(this);
         this.validatePassword = this.validatePassword.bind(this);
-        this.handleIncorrectCredential = this.handleIncorrectCredential.bind(this);
     }
     handleInputChangeEmail(e){
         this.setState({
@@ -67,7 +66,7 @@ class Login extends React.Component{
             })
         }  // login failed 
     }
-    validateEmail(){
+    validateEmail(){  // email needs to meet the format and length is between 4 and 32
         const { email } = this.state;
         const exp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if(email.length<4 || email.length>32 || !exp.test(email)){
@@ -80,7 +79,7 @@ class Login extends React.Component{
             },()=>{})
         }
     }
-    validatePassword(){
+    validatePassword(){   // password can't be ''
         const { password } =  this.state;
         if(password===''){
             this.setState({
@@ -92,16 +91,11 @@ class Login extends React.Component{
             },()=>{})
         }
     }
-    handleIncorrectCredential(){
-        this.setState({
-            incorrectCredential: false
-        })
-    }
     render(){
         const { email, password, invalidEmail, invalidPassword, passwordScore } = this.state;
         return(
             <div className="login" data-test="login">
-                <div className={this.state.incorrectCredential?"login_status-fail":"login_status"}>
+                <div className={this.state.incorrectCredential?"login_status-fail":"login_status"}> 
                     <div>
                         <h3>Login failed</h3>
                         <p>Sorry, these login details do not match an existing client profile. Please try again</p>

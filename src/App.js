@@ -1,3 +1,4 @@
+require('dotenv').config();
 import React, { Component, Fragment } from 'react';
 import store from './store/index';
 import { Provider } from 'react-redux';
@@ -28,11 +29,11 @@ class App extends Component {
     return (
       <Provider store = {store}>
         <Fragment>
-          <Router>
+          <Router forceRefresh={true}>
             <Navbar />
             <main>
               <Switch>
-                <Route path="/" component={Home} />
+                <Route path="/" render={()=> <Home key={Math.random()} />} />
 
               </Switch>
             </main>
