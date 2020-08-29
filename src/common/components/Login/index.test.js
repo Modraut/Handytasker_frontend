@@ -20,7 +20,7 @@ test('Login/click button to trigger this.handleLogin()', ()=>{
 test(`Login/
       1. test this.handleLogin() with empty email and password
       2. test this.handleLogin() with invalid/valid email and password`, ()=>{
-  // part 1
+  // test 1
   const wrapper = shallow(<Login.WrappedComponent />);
   const e = {preventDefault: ()=>{}};
   wrapper.instance().handleLogin(e);
@@ -28,7 +28,7 @@ test(`Login/
   expect(wrapper.state('invalidPassword')).toBeTruthy;
   expect(findTestWrapper(wrapper, 'invalidEmail').length).toBe(1);
   expect(findTestWrapper(wrapper, 'invalidPassword').length).toBe(1);
-  // part 2
+  // test 2
   const email = findTestWrapper(wrapper, 'email');
   const password = findTestWrapper(wrapper, 'password');
   // test email

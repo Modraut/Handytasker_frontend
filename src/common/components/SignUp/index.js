@@ -1,12 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import './style.scss';
-import { Link, Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { getReturnPath } from "../../common.js"
 import userAPI from '../../../services/userAPI';
-// import { validate } from '../../common.js';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
 
@@ -20,7 +18,7 @@ class SignUp extends React.Component{
             passwordScore: 0,
             invalidCredential: false,  //failure due to credential in wrong format
             invalidEmail: true,
-            invalidPassword: true,
+            toShortPassword: true,
         }
         this.handleSignUp = this.handleSignUp.bind(this);
 
@@ -34,7 +32,7 @@ class SignUp extends React.Component{
     getPasswordScore(score){  // think about how to use it
         this.setState({
             passwordScore:score
-        })
+        }, ()=>{})
     }
     // handleSignUp = async (e)=>{
     //     e.preventDefault();
@@ -71,8 +69,10 @@ class SignUp extends React.Component{
     }
     handleSignUp(e){
         e.preventDefault();
-        const { email, password, invalidEmail, invalidPassword } = this.state;
-        if(!invalidEmail && !invalidPassword){
+        const { email, password, invalidEmail, tooShortPassword } = this.state;
+        this.validateEmail();
+        this.validatePassword();
+        if(!invalidEmail && passwordScore>=2){
             const userCredential = { email, password };
             userAPI.signUp(userCredential).then(data=>{
                 // window.localStorage.setItem('token',data.token);
@@ -103,13 +103,13 @@ class SignUp extends React.Component{
     }
     validatePassword(){   // password can't be ''
         const { password } =  this.state;
-        if(password.length>=6){
+        if(password.length<7){
             this.setState({
-                invalidPassword: true
+                tooShortPassword: true
             },()=>{})
         }else{
             this.setState({
-                invalidPassword: false
+                tooShortPassword: false
             },()=>{})
         }
     }
@@ -132,7 +132,7 @@ class SignUp extends React.Component{
                         <div className="signUp_content_main_input">
                             <label htmlFor="email">Email</label>
                             <input 
-                                type="text" id="email" placeholder="Email" autoComplete="on" autoFocus="on"
+                                type="text" id="email" placeholder="Email" autoComplete="on" autoFocus="on" 
                                 onChange={this.handleInputChangeEmail} value={email} data-test="email" />
                                 {this.state.invalidCredential && this.state.invalidEmail && <p data-test="invalidEmail">Please enter a valid email address</p> }
                         </div>
@@ -142,10 +142,12 @@ class SignUp extends React.Component{
                                 type="text" id="password" placeholder="Password" autoComplete="on"
                                 onChange={this.handleInputChangePassword} value={password} data-test="password"
                             />
-                            {this.state.invalidCredential && this.state.invalidPassword && <p data-test="invalidPassword">please enter a minimum of 6 characters</p> }
+                            {this.state.invalidCredential && this.state.tooShortPassword && <p data-test="tooShortPassword">Please enter a minimum of 7 characters</p> }
+                            {this.state.invalidCredential && this.state.passwordScore<2 && !this.state.tooShortPassword && <p data-test="weakPassword">Please choose a stronger password</p> }
+
                             <PasswordStrengthBar className="signUp_content_main_input_strength" password={password} onChangeScore={(score)=>{this.getPasswordScore(score)}} />
                         </div>
-                        <button className="signUp_content_main_join" type="submit" onClick={this.handleSignUp}>Join Handytasker</button>
+                        <button className="signUp_content_main_join" type="submit" onClick={this.handleSignUp} data-test="submit" >Join Handytasker</button>
                         <div className="signUp_content_main_signUpWith">
                             <p>or sign up with</p>
                         </div>
