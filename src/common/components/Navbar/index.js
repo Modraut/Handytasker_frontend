@@ -29,6 +29,9 @@ class Navbar extends Component{
     //         })
     //     }
     // }
+    componentDidUpdate(){
+        console.log("component updated");
+    }
     componentDidMount(){
         if(this.state.login===false){
             window.addEventListener('scroll', this.handleTransparency);

@@ -24,11 +24,16 @@ class App extends Component {
       login: true
     })
   }
+  componentDidMount(){
+    
+  }
   render(){
     return (
       <Provider store = {store}>
         <Fragment>
-          <Router forceRefresh={true}>
+          <Router
+            // forceRefresh={true}
+          >
             <Navbar />
             <main>
               <Switch>
@@ -50,6 +55,8 @@ class App extends Component {
     )
   }
 }
+
+
 
 
 export default App;
