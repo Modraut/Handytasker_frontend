@@ -1,8 +1,9 @@
 import  {combineReducers} from 'redux-immutable';
-// import { reducer as headerReducer} from '../common/header/store/index';
+import { reducer as userReducer} from './user/index';
+import { reducer as taskReducer} from './task/index';
 
 export default combineReducers({
-    // header: headerReducer,
-
+    user: userReducer,
+    task: taskReducer
 })
 

@@ -1,13 +1,13 @@
 import axios from 'axios';
 // import { makeUserMocker } from './mockAxios';
 // import { postData as jwtPostData } from '../Util';
-
-
+const token = window.localStorage.getItem('jwtToken');
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 // this part can be moved to .env?
 const BACKEND_URL = "http://localhost:8080";
 const userInfoURL = BACKEND_URL + "/userinfo";
 const userCredentialsURL = BACKEND_URL + "/user";
-const userAvatarURL = BACKEND_URL + "/userinfos/avatar/";
+const userAvatarURL = BACKEND_URL + "/userinfo/avatar/";
 
 const userAPI = {
   /*
@@ -39,21 +39,16 @@ const userAPI = {
   },
   /*
   @description: load userinfo after login
-  @param: none, get jwt from localStorage to fetch userInfo from backend
-  @return: userInfo at res.data for private use
+  @param: no, default headers with jwt token for axios has been set under userAPI.js
+  @return: try => res - use res.data to get user info and res.status to get response status
+          catch => e.response - use e.response.status to get error status
   */
   loadUserWithJwt: async ()=>{
-    if(!window.localStorage){
-      return false
-    }else{
-      try{
-        const res = await axios.post(userInfoURL, {},
-          { headers: { Authorization: "Bearer" + window.localStorage.getItem('jwtToken') } }
-        )
-        return res.data;
-      } catch(e){
-        console.log(e);
-      }
+    try{
+      const res = await axios.get(userInfoURL);
+      return res;
+    } catch(e){
+      return e.response
     }
   }
 }

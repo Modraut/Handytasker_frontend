@@ -54,9 +54,9 @@ class Login extends React.Component{
         this.validateEmail();
         this.validatePassword();
         if(!invalidEmail && !invalidPassword){
-            userAPI.login({email, password}).then(data=>{
-                window.localStorage.setItem('email',data.email);
-                window.localStorage.setItem('password',data.password);
+            userAPI.login({ email, password }).then(res=>{
+                console.log(res.token);
+                window.localStorage.setItem( 'jwtToken', res.token );
             }).catch(error=>{
                 this.setState({
                     incorrectCredential: true  // login failed due to wrong credential
@@ -64,9 +64,9 @@ class Login extends React.Component{
             })
         }else{
             this.setState({
-                invalidCredential: true   // login failed due to wrong format
+                invalidCredential: true   // login failed due to wrong format of email/password
             })
-        }  // login failed 
+        }
     }
     validateEmail(){  // email needs to meet the format and length is between 4 and 32
         const { email } = this.state;

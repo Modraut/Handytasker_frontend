@@ -20,28 +20,19 @@ class Navbar extends Component{
         this.handleTransparency = this.handleTransparency.bind(this);
 
     }
-    // componentWillMount(){
-    //     const storage = window.localStorage;
-    //     const token = storage.getItem('token');
-    //     if(token){
-    //         this.setState({
-    //             login: true
-    //         })
-    //     }
-    // }
-    componentDidUpdate(){
-        console.log("component updated");
-    }
     componentDidMount(){
-        if(this.state.login===false){
-            window.addEventListener('scroll', this.handleTransparency);
-            this.header = document.querySelector('.header');
-            this.header.classList.add("transparent")
+        window.addEventListener('scroll', this.handleTransparency);
+        this.header = document.querySelector('.header');
+
+    }
+    componentDidUpdate(){
+        if(this.props.login===true){
+            this.header.classList.remove("transparent")
         }
     }
     handleTransparency(){
         let distanceFromTop = window.scrollY;
-        if(distanceFromTop===0){
+        if(this.props.login===false && distanceFromTop===0){
             this.header.classList.add("transparent")
         }else{
             this.header.classList.remove("transparent")
@@ -71,12 +62,12 @@ class Navbar extends Component{
         // this.currentPath = this.props.location.pathname;
         this.currentPath = window.location.pathname;
         return(
-            <header className="header">
+            <header className="header transparent">
                 <nav  className="header_navbar">
                     <Link to="./" className="header_navbar_logo">
                         <Logo />
                     </Link>
-                    {this.state.login===false &&
+                    {this.props.login===false &&
                     // navbar for visitor (not logged in)
                         <Fragment>
                             <ul className="header_navbar_user">
@@ -92,7 +83,7 @@ class Navbar extends Component{
                             </ul>
                         </Fragment>
                     }
-                    {this.state.login===true &&
+                    {this.props.login===true &&
                     // navbar for user (logged in)
                         <Fragment>
                             <ul className="header_navbar_user">
@@ -115,9 +106,9 @@ class Navbar extends Component{
 }
 
 
-// const mapState = state => ({
-//     loginStatus: state.getIn(["login", "loginStatus"])
-// });
+const mapState = state => ({
+    login: state.getIn(["user", "login"])
+});
 
 // const mapDispatch = (dispatch) => ({
 //     updateHomeData(){
@@ -127,4 +118,4 @@ class Navbar extends Component{
 // })
 
 // export default withRouter(Navbar);
-export default Navbar;
+export default connect(mapState, null)(Navbar);
