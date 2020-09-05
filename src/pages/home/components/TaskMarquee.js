@@ -81,11 +81,11 @@ class TaskMarquee extends React.Component {
                     {/* this should an independent component with task list as props
                         Think about how to do the css effects
                     */}
-                    <ul class="marquee_tasks_row first_row">
+                    <ul className="marquee_tasks_row first_row">
                         {
                             taskList.map(item=>(
-                                <li class="marquee_tasks_row_card">
-                                    <div class="marquee_tasks_row_card_container">
+                                <li className="marquee_tasks_row_card">
+                                    <div className="marquee_tasks_row_card_container">
                                         <h3>{item.type}</h3>
                                         <div>
                                             <img src={item.avatar} />
@@ -101,11 +101,11 @@ class TaskMarquee extends React.Component {
                             ))
                         }
                     </ul>
-                    <ul class="marquee_tasks_row second_row">
+                    <ul className="marquee_tasks_row second_row">
                         {
                                 taskList.map(item=>(
-                                    <li class="marquee_tasks_row_card">
-                                        <div class="marquee_tasks_row_card_container">
+                                    <li className="marquee_tasks_row_card">
+                                        <div className="marquee_tasks_row_card_container">
                                             <h3>{item.type}</h3>
                                             <div>
                                                 <img src={item.avatar} />

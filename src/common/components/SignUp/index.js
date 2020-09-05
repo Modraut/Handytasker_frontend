@@ -69,7 +69,7 @@ class SignUp extends React.Component{
     }
     handleSignUp(e){
         e.preventDefault();
-        const { email, password, invalidEmail, tooShortPassword } = this.state;
+        const { email, password, invalidEmail, tooShortPassword, passwordScore } = this.state;
         this.validateEmail();
         this.validatePassword();
         if(!invalidEmail && passwordScore>=2){
