@@ -1,123 +1,122 @@
-// @import './../../Variables.scss';
 @import './../../commonStylesheet.scss';
 
-
-body{
-    font-size: 14px;
-    height: 100rem;
-    background: #f6f8fd;
-    // position: relative;
-    .header{
-        z-index: 1;
-        transition: background-color 0.5s ease-in-out;
+.header{
+    z-index: 1;
+    transition: background-color 0.5s ease-in-out;
+    width: 100%;
+    background: white;
+    box-sizing: border-box; // totally 3.5*16=56px
+    height: 3.5rem;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    &_navbar{
+        // need to make it responsive later
         width: 100%;
-        background: white;
-        border-bottom: 1px solid #ccc;
-        position: fixed;
-        top: 0;
-        height: 3.5rem;
-        &_navbar{
-            width: 60rem;
+        height: 100%;
+        margin: 0 auto;
+        @media (min-width: 1060px){
+            width: 1040px;
+        }
+        // simple navbar mode is not done yet
+        &.visitorMode{
+            @media (max-width: 920px) {
+                width: 900px;
+            }
+        }
+        &.userMode{
+            @media (max-width: 840px) {
+                width: 820px;
+            }
+        }
+        li>a{
+            font-size: 1rem;
+        }
+        &_logo{
+            width: 8rem;
+            height: 3.5rem;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-right: 1rem;
+            float: left;
+            svg>g{
+                fill: $color-green-blue;
+            }
+        }
+        &_nav{
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
             height: 100%;
-            margin: 0 auto;
-            li>a{
-                font-size: 1rem;
-            }
-            &_logo{
-                width: 8rem;
-                height: 3.5rem;
-                background-size: cover;
-                background-repeat: no-repeat;
-                margin-right: 1rem;
-                float: left;
-                svg>g{
-                    fill: $color-green-blue;
+            border-left: 1px solid rgba(0,0,0,.1);
+            li{
+                @include nav_li_font;
+                &:not(.header_navbar_nav_logo):hover{
+                    border-top: 3px solid rgb(198, 190, 179);
+                    border-bottom: 3px solid transparent;
                 }
-            }
-            &_nav{
-                display: flex;
-                align-items: center;
-                padding: 0 1rem;
-                height: 100%;
-                border-left: 1px solid rgba(0,0,0,.1);
-                li{
-                    @include nav_li_font;
-                    &:not(.header_navbar_nav_logo):hover{
-                        border-top: 3px solid rgb(198, 190, 179);
-                        border-bottom: 3px solid transparent;
-                    }
-                    >button{
-                        color: white;
-                        background: $color-button-pink;
-                        &.visitor{
-                            @include button-basic;
-                            font-size: toRem(11);
-                        }
-                        &.loggedin{
-                            border: 1px solid rgba(41,43,50,.1);
-                            border-radius: 200px;
-                            font-size: 1.1rem;
-                            font-weight: bold;
-                            padding: 0.3rem 1rem;
-                        }
-                    }
-                }
-            }
-            &_user{
-                // color: white;
-                float: right;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                li{
-                    @include nav_li_font;
-                    button{
+                >button{
+                    color: white;
+                    background: $color-button-pink;
+                    &.visitor{
                         @include button-basic;
-                        color: $color-green-blue;
-                        background: #f6f8fd;
                         font-size: toRem(11);
-                    } // for become a tasker button as visitor
-                    img{
-                        width: 2.5rem;
-                        height: 2.5rem;
-                        border-radius: 50%;
+                    }
+                    &.user{
+                        border: 1px solid rgba(41,43,50,.1);
+                        border-radius: 200px;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        padding: 0.3rem 1rem;
                     }
                 }
             }
         }
-        &.transparent{
-            transition: all 0.5s ease-in-out;
-            background: none;
-            border: none;
+        &_account{
+            // color: white;
+            float: right;
+            height: 100%;
+            display: flex;
+            align-items: center;
             li{
-                color: white;
-                &:hover{
-                    color: rgb(198, 190, 179);
+                @include nav_li_font;
+                button{
+                    @include button-basic;
+                    color: $color-green-blue;
+                    background: #f6f8fd;
+                    font-size: toRem(11);
+                } // for become a tasker button as visitor
+                img{
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 50%;
                 }
-            }
-            .header_navbar_user>li>button{
-                color: white;
-                background: none;
-                border: 1px solid white;
-                &:hover{
-                    transition: all 0.5s ease-in-out;
-                    background: white;
-                    border: 1px solid $color-green-blue;
-                    color: $color-green-blue;;
-                }
-            }
-            .header_navbar_logo_svg{
-                fill: white;
             }
         }
     }
-    main{
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-
+    &.transparent{
+        transition: all 0.5s ease-in-out;
+        background: none;
+        border: none;
+        li{
+            color: white;
+            &:hover{
+                color: rgb(198, 190, 179);
+            }
+        }
+        .header_navbar_user>li>button{
+            color: white;
+            background: none;
+            border: 1px solid white;
+            &:hover{
+                transition: all 0.5s ease-in-out;
+                background: white;
+                border: 1px solid $color-green-blue;
+                color: $color-green-blue;;
+            }
+        }
+        .header_navbar_logo_svg{
+            fill: white;
+        }
     }
 }

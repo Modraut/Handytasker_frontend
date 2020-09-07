@@ -1,4 +1,3 @@
-// @import './commonStylesheet.scss';
 @function toRem($px){
   @return ($px/16)*1rem
 };
@@ -21,16 +20,32 @@ $color-green-blue: #008fb4;
 
 
 $border-radius-header-button: 19px;
-$height-header: toRem(56);
 $margin-top-header-li: 0.5rem;
 //The page is divided into 3 parts for both header and body
-$width-middle: 60%;
-$width-left: 20%;
-$width-right: 20%;
+// $width-middle: toRem(800);  
+
 
 //responsive
-$width-navbar: 960px;
+$width-navbar-and-main: 60rem; // for the content of header and main tag
 // $width-navbar-2: 1050px;
+
+// Navbar - not used now
+$width-navbar-max: 65rem;  // equals 1040px. max size for screen width > 1060px
+$width-navbar-user: 820px; // For screen width < 840px at user mode 
+$width-navbar-visitor: 900px; // For screen width < 900px at visitor mode
+$width-navbar-min: 20rem; // 320px. min size
+
+// HomePanel
+$width-homePanel_0: toRem(880); // full size
+$width-homePanel_1: toRem(820); // use smaller font size for screen width < 820
+
+// PrivateUserProfile
+$width-privateUserProfile_max: toRem(1020); // max size
+$width-privateUserProfile: 100%; // For screen width less than 1020. 
+
+
+
+
 
 
 

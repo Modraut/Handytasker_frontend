@@ -56,21 +56,21 @@ class Navbar extends Component{
         </g>
         </svg>
     )
-
+    // responsive: simple mode when screen size < 820px
     render(){
         const Logo = this.logoPic;
         // this.currentPath = this.props.location.pathname;
         this.currentPath = window.location.pathname;
         return(
             <header className="header transparent">
-                <nav  className="header_navbar">
+                <nav  className={this.props.login?"header_navbar userMode":"header_navbar visitorMode"} >
                     <Link to="./" className="header_navbar_logo">
                         <Logo />
                     </Link>
                     {this.props.login===false &&
                     // navbar for visitor (not logged in)
                         <Fragment>
-                            <ul className="header_navbar_user">
+                            <ul className="header_navbar_account">
                                 <li><Link to={this.currentPath==="/"? "/sign-up": this.currentPath+"sign-up"}>Sign up</Link></li>
                                 <li><Link to={this.currentPath==="/"? "/login": this.currentPath+"login"}>Log in</Link></li>
                                 <li><button>Become a tasker</button></li>
@@ -85,15 +85,15 @@ class Navbar extends Component{
                     }
                     {this.props.login===true &&
                     // navbar for user (logged in)
-                        <Fragment>
-                            <ul className="header_navbar_user">
+                        <Fragment className="usersMode">
+                            <ul className="header_navbar_account">
                                 <li><Link to="/">Help</Link></li>
                                 <li><Link to="/">Notifications</Link></li>
                                 <li><Link to="/">Messages</Link></li>
                                 <li><Link><img src={defaultAvatar} alt="avatar" /></Link></li>
                             </ul>
                             <ul className="header_navbar_nav">
-                                <li className="header_navbar_nav_logo"><button className="loggedin">Post a task</button></li>
+                                <li className="header_navbar_nav_logo"><button className="user">Post a task</button></li>
                                 <li><Link to="/">Browse tasks</Link></li>
                                 <li><Link to="/">My tasks</Link></li>
                             </ul>

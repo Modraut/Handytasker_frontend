@@ -11,6 +11,7 @@ import Navbar from './common/components/Navbar';
 import PostTask from './common/components/PostTask';
 import { actionCreators } from './store/user/index';
 import store from './store';
+import PrivateUserProfile from './pages/PrivateUserProfile';
 class App extends Component {
   constructor(){
     super();
@@ -28,7 +29,7 @@ class App extends Component {
     if(!window.localStorage){
       console.log('No token');
     }else{
-    this.props.loadUser()
+    // this.props.loadUser()
     // userAPI.loadUserWithJwt(token)
     }
   }
@@ -39,13 +40,13 @@ class App extends Component {
         <Navbar />
         <main>
           <Switch>
+            <Route path="/account" render={PrivateUserProfile} />
             <Route path="/" render={()=> <Home key={Math.random()} />} />
-
           </Switch>
         </main>
         <footer></footer>
         <Route path='/*/sign-up' component={() => <SignUp handleLoginStatus={this.handleLoginStatus} />} />
-        {/* callback to enable this.props for <SignUp> */}
+        {/* callback to enable this.props for <SignUp>. To be remove later */}
         <Route path='/sign-up' component={() => <SignUp handleLoginStatus={this.handleLoginStatus} />} />
         <Route path='/*/login' component={() => <LogIn handleLoginStatus={this.handleLoginStatus} />} />
         <Route path='/login' component={() => <LogIn handleLoginStatus={this.handleLoginStatus} /> } />
