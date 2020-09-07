@@ -16,6 +16,7 @@ const setUserInfo = (data) => {
 export const loadUser = () =>{
   return async (dispatch) => {
     userAPI.loadUserWithJwt().then(res => {
+      console.log(res);
       res.status===200 && dispatch(setUserInfo(res.data));
       res.status===401 && console.log('Invalid jwt token');
     })

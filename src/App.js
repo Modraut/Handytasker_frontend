@@ -29,7 +29,7 @@ class App extends Component {
     if(!window.localStorage){
       console.log('No token');
     }else{
-    // this.props.loadUser()
+    this.props.loadUser()
     // userAPI.loadUserWithJwt(token)
     }
   }

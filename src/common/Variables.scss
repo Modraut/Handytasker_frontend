@@ -17,31 +17,28 @@ $color-font-black: #292B32;
 $color-green-blue: #008fb4;
 
 
-
-
 $border-radius-header-button: 19px;
 $margin-top-header-li: 0.5rem;
 //The page is divided into 3 parts for both header and body
 // $width-middle: toRem(800);  
 
 
-//responsive
-$width-navbar-and-main: 60rem; // for the content of header and main tag
-// $width-navbar-2: 1050px;
+//responsive plan
 
 // Navbar - not used now
 $width-navbar-max: 65rem;  // equals 1040px. max size for screen width > 1060px
-$width-navbar-user: 820px; // For screen width < 840px at user mode 
-$width-navbar-visitor: 900px; // For screen width < 900px at visitor mode
+$width-navbar-user: 820px; // screen width < 840px at user mode 
+$width-navbar-visitor: 900px; // screen width < 920px at visitor mode
+// For further responsive, it should be 100% if Navbar switches to simple mode. 
 $width-navbar-min: 20rem; // 320px. min size
 
 // HomePanel
-$width-homePanel_0: toRem(880); // full size
-$width-homePanel_1: toRem(820); // use smaller font size for screen width < 820
+$fontsize-homePanel-big: 3rem; // full size
+$width-homePanel_1: 2.5rem; // use smaller font size for screen width < 920px
 
 // PrivateUserProfile
-$width-privateUserProfile_max: toRem(1020); // max size
-$width-privateUserProfile: 100%; // For screen width less than 1020. 
+$width-privateUserProfile_max: 65rem; // Equals 1040px. max size
+$width-privateUserProfile: 100%; // For screen width less than 1060. 
 
 
 
