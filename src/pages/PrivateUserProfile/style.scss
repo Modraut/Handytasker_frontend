@@ -1,0 +1,22 @@
+@import '../../common/commonStylesheet.scss';
+
+.account {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  // height: calc(100vh - 3.5rem);
+  margin: 3.5rem auto 0 auto;
+  max-width: $width-privateUserProfile_max;
+  position: relative;
+  &_main {
+    flex-grow: 1;
+    // display: inline-block;
+    // background: lightblue;   //testing
+    // width: 800px;
+    // height: calc(100vh - 3.5rem);
+    height: 100%;
+    padding: 20px;
+    // width: 80%;
+    padding: 3rem 2rem 0 2rem;
+  }
+}

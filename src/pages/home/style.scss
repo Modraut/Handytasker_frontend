@@ -3,17 +3,15 @@
 
 .home{
 	width: 100%;
-   min-width: toRem(600);
+   min-width: toRem(700);
    height: 30rem;
    display: flex; // for margin
    margin: 0 auto;
    flex-direction: column;
-   &_left{
-      width: 70%;
-      margin-top: 2rem;
-   }
-   &_aside{
-      margin: 1rem 0 0 3rem;
-      width: 30%;
+   &_categories_title{
+      font-size: 2rem;
+      font-weight: bolder;
+      margin-bottom: 1rem;
+      color: $color-font-black;
    }
 }

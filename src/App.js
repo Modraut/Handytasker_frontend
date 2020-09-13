@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import './globalStyle.scss';
 import './style.scss';
+import { actionCreators } from './store/user/index';
+import store from './store';
 
 import Home from './pages/home/index';
 import SignUp from './common/components/SignUp';
 import LogIn from './common/components/Login';
 import Navbar from './common/components/Navbar';
 import PostTask from './common/components/PostTask';
-import { actionCreators } from './store/user/index';
-import store from './store';
+import PrivateUserProfile from './pages/PrivateUserProfile';
 class App extends Component {
   constructor(){
     super();
@@ -39,13 +40,13 @@ class App extends Component {
         <Navbar />
         <main>
           <Switch>
+            <Route path="/account" render={PrivateUserProfile} />
             <Route path="/" render={()=> <Home key={Math.random()} />} />
-
           </Switch>
         </main>
         <footer></footer>
         <Route path='/*/sign-up' component={() => <SignUp handleLoginStatus={this.handleLoginStatus} />} />
-        {/* callback to enable this.props for <SignUp> */}
+        {/* callback to enable this.props for <SignUp>. To be remove later */}
         <Route path='/sign-up' component={() => <SignUp handleLoginStatus={this.handleLoginStatus} />} />
         <Route path='/*/login' component={() => <LogIn handleLoginStatus={this.handleLoginStatus} />} />
         <Route path='/login' component={() => <LogIn handleLoginStatus={this.handleLoginStatus} /> } />

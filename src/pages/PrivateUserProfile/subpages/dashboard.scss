@@ -1,0 +1,34 @@
+@import '../../../common/commonStylesheet.scss';
+
+.account_main_dashboard{
+    &_instantBook{
+        margin: 0 auto;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 16px;
+        img{
+            width: 50rem;
+        }
+    }
+    &_categories_title{
+        h3{
+            font-size: 1.3rem;
+            font-weight: bold;
+            line-height: 2rem;
+            margin-bottom: 0.5rem;
+            >img{
+                float: left;
+                width: 2rem;
+                margin: 0 1rem 0 0.5rem;
+            }
+        }
+        h4{
+            color: $color-font-grey;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    }
+}

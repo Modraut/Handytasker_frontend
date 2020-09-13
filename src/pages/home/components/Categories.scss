@@ -5,12 +5,6 @@
     padding: 2rem 0;
     max-width: 60rem;
     margin: 0 auto;
-    h2{
-      font-size: 2rem;
-      font-weight: bolder;
-      margin-bottom: 1rem;
-      color: $color-font-black;
-    }
     ul{
       display: flex;
       flex-wrap: wrap;
@@ -18,6 +12,7 @@
       li{
         width: 7rem;
         height: 9rem;
+        cursor: pointer;
         >div{
           width:6rem;
           height: 6rem;
