@@ -2,6 +2,7 @@ import React from 'react';
 // import store from '../../../redux/store.js';
 import './sidebar.scss';
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux';
 
 
 
@@ -19,12 +20,13 @@ class Sidebar extends React.Component {
     }))
   }
   render() {
+    const { avatar, firstName, lastName } = this.props;
     return (
       <div className="account_sidebar">
         <div className="account_sidebar_container">
           <div className="account_sidebar_container_avatar">
-            {/* <img src={currentUser.avatar} alt="pending" />
-            <div>{currentUser.firstName + ' ' + currentUser.lastName} </div> */}
+            <img src={avatar} alt="pending" />
+            <div>{firstName + ' ' + lastName} </div>
           </div>
           <nav>
             <ul>
@@ -53,4 +55,10 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+const mapState = (state) => ({
+  avatar: state.getIn(['user', 'avatar']),
+  firstName: state.getIn(['user', 'firstName']),
+  lastName: state.getIn(['user', 'lastName']),
+})
+
+export default connect(mapState)(Sidebar);
