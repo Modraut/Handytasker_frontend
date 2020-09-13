@@ -4,7 +4,7 @@ $border-arrow: 0.4rem;
 .account_sidebar{
   background: #fdfefe;
   width: 13rem;
-  border-right: 1px solid #c3c9e0;
+  border-right: 1px solid $color-border-grey;
   min-height: 100%;
   color: $color-font-grey;
   flex-shrink: 0;
@@ -16,13 +16,13 @@ $border-arrow: 0.4rem;
     &_avatar{
       width: 100%;
       height: toRem(210);
-      padding: 30px 0 10px 0; //?
       text-align: center;
       >img{
         width: 8rem;
         height: 8rem;
         border-radius: 50%;
-        display: inline-block;
+        border: 2px solid $color-border-grey;
+        margin: 1.5rem 0 1rem 0;
       }
     }
     li{
