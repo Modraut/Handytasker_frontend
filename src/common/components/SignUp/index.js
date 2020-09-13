@@ -21,7 +21,6 @@ class SignUp extends React.Component{
             toShortPassword: true,
         }
         this.handleSignUp = this.handleSignUp.bind(this);
-
         this.handleInputChangeEmail = this.handleInputChangeEmail.bind(this);
         this.handleInputChangePassword = this.handleInputChangePassword.bind(this);
         this.getPasswordScore = this.getPasswordScore.bind(this);

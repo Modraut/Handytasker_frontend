@@ -8,4 +8,10 @@
    display: flex; // for margin
    margin: 0 auto;
    flex-direction: column;
+   &_categories_title{
+      font-size: 2rem;
+      font-weight: bolder;
+      margin-bottom: 1rem;
+      color: $color-font-black;
+   }
 }

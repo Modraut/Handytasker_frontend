@@ -1,0 +1,106 @@
+@import '../../../common/commonStylesheet.scss';
+$border-arrow: 0.4rem;
+
+.account_sidebar{
+  background: #fdfefe;
+  width: 13rem;
+  border-right: 1px solid #c3c9e0;
+  min-height: 100%;
+  color: $color-font-grey;
+  flex-shrink: 0;
+  &_container{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3.5rem;
+    overflow-x: hidden;
+    &_avatar{
+      width: 100%;
+      height: toRem(210);
+      padding: 30px 0 10px 0; //?
+      text-align: center;
+      >img{
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+    li{
+      border-bottom: 1px solid #f8fafd;
+      padding-left: 1rem;
+      line-height: toRem(44);
+      cursor: pointer;
+      font-size: 0.9rem;
+      &.settings{
+        box-sizing: border-box;
+        width: 15rem;
+        position: relative;
+        padding-left: 3rem;
+        transition: all 0.3s ease-in-out;
+        &.account_sidebar_container-defaultMode{
+          left: -2rem;
+        }
+        &.account_sidebar_container-settingsMode{
+          left: 0;
+          padding-left: 2rem;
+        }
+        >span{
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border: $border-arrow solid transparent;
+          position: absolute;
+          &:first-of-type{
+            border-right: $border-arrow solid #333;
+            top: 1rem;
+            left: 0.4rem;
+          }
+          &:last-of-type{
+            border-left: $border-arrow solid #333;
+            top: 1rem;
+            right: 0.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.account_sidebar_container-hideSettings, .account_sidebar_container-hideDefault {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.account_sidebar_container-showDefault {
+  height: 180px;  //each <li> is 44+1 px
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.account_sidebar_container-showSettings{
+  height: 135px;  //each <li> is 44+1 px
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+// @keyframes settings-mode {
+//   100% {
+//     border-right: $border-arrow solid #333;
+//     float: left;
+//     transition: all 1s ease;
+//   }
+// }
+// li.account_sidebar_container-settingsMode {
+//   color: #008fb4;
+//   animation: settings-mode 0.2s ease forwards;
+// }
+// @keyframes default-mode {
+//   100% {
+//     border-left: $border-arrow solid #333;
+//     float: right;
+//     transition: all 1s ease;
+//   }
+// }
+// li.account_sidebar_container-defaultMode {
+//   animation: default-mode 0.3s ease forwards;
+
+// }

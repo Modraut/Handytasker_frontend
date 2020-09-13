@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './style.scss';
 import PanelBlock from "./components/PanelBlock";
-import { Categories } from './components/Categories';
+import Categories from './components/Categories';
 import TaskMarquee from './components/TaskMarquee';
 
 
@@ -20,7 +20,9 @@ class Home extends React.Component{
         return(
             <div className="home">
                 <PanelBlock />
-                <Categories />
+                <Categories>
+                    <h2 className="home_categories_title" >What do you need done?</h2>
+                </Categories>
                 <TaskMarquee />
             </div>
         )
