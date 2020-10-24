@@ -1,0 +1,64 @@
+.account_main_notifications{
+    &_header{
+        padding: 20px;
+        border-bottom: 1px solid #f6f8fd;
+        >h4{
+            color: #292b32;
+            font-size:19px;
+            font-weight: 500;
+            margin: 0px;
+            float:left;
+        }
+        >div{
+            float: right;
+            width: 212px;
+            &:nth-child(2){
+                color: #bbc2dc;
+                text-align: center;
+                font-size: 9px;
+                text-transform: uppercase;
+            }
+            &:last-child{
+                >div{
+                    float: left;
+                    width: 152px;
+                    height: 7px;
+                    border-radius: 100px;
+                    background: #7db343;
+                }
+            }
+        }
+    }
+    &_body{
+        padding: 20px;
+        >p{
+            color: #545a77;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        section{
+            position: relative;
+            overflow: hidden;
+            font-weight: 700;
+            p{
+                color: #545a77;
+                float: left;
+                line-height: 25px;
+                span{
+                    color: #008fb4
+                }
+                padding: 7px 0;
+            }
+            time{
+                position: absolute;
+                right:0;
+                bottom: 0;
+                font-size: 10px;
+                float: right;
+                color: #545a77;
+            }
+        }
+        
+    }
+
+}

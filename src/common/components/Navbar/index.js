@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faPenNib, faCompass, faFileDownload, faGem, faBars } from '@fortawesome/free-solid-svg-icons';
 // import logoPic from "../../pic/navbar_logo.png";
 import { getReturnPath } from '../../common';
-import defaultAvatar from "./pic/default.jpg";
+import defaultAvatar from "./pic/default-avatar.jpg";
 
 class Navbar extends Component{
     constructor(){
@@ -90,7 +90,7 @@ class Navbar extends Component{
                                 <li><Link to="/">Help</Link></li>
                                 <li><Link to="/">Notifications</Link></li>
                                 <li><Link to="/">Messages</Link></li>
-                                <li><Link><img src={defaultAvatar} alt="avatar" /></Link></li>
+                                <li><Link><img src={this.props.avatar? this.props.avatar: defaultAvatar} alt="default" /></Link></li>
                             </ul>
                             <ul className="header_navbar_nav">
                                 <li className="header_navbar_nav_logo"><button className="user">Post a task</button></li>
@@ -107,7 +107,8 @@ class Navbar extends Component{
 
 
 const mapState = state => ({
-    login: state.getIn(["user", "login"])
+    login: state.getIn(["user", "login"]),
+    avatar: state.getIn(["user","avatar"])
 });
 
 // const mapDispatch = (dispatch) => ({

@@ -1,0 +1,89 @@
+.account_main_skills{
+    &_header{
+        padding: 20px;
+        border-bottom: 1px solid #f6f8fd;
+        >h4{
+            color: #292b32;
+            font-size:19px;
+            font-weight: 500;
+            margin: 0px;
+            float:left;
+        }
+        >div{
+            float: right;
+            width: 212px;
+            &:nth-child(2){
+                color: #bbc2dc;
+                text-align: center;
+                font-size: 9px;
+                text-transform: uppercase;
+            }
+            &:last-child{
+                >div{
+                    float: left;
+                    width: 100px;
+                    height: 7px;
+                    border-radius: 100px;
+                    background: #7db343;
+                }
+            }
+        }
+    }
+    form{
+        padding: 20px;
+        h5{
+            font-weight: 500;
+            color: #545a77;
+        }
+        label{
+
+        }
+        input{
+            width: 688px;
+            height: 40px;
+            border: 1px solid #bbc2dc;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin: 5px 5px 10px 5px;
+            font-weight: 500;
+            color: #545a77;
+        }
+        .private_main_skills_body_checkbox{
+            display: block;
+            margin: 10px 0;
+            font-weight: 500;
+            color: #545a77;
+            font-size: 14px;
+            >div{
+                display: flex;
+                margin: 5px 0;
+            }
+            input{
+                width: 18px;
+                height: 18px;
+                align-self: center
+            }
+            span{
+                padding-left: 5px;
+                padding-right: 20px;
+                align-self: center
+            }
+        }
+        button{
+            padding: 6px 16px;
+            letter-spacing: .25px;
+            border-radius: 200px;
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+            cursor: pointer;
+            box-sizing: border-box;
+            font-weight: 500;
+            height: 40px;
+            margin: 8px 0;
+            border: 2px solid #74a541;
+            background-color: #7db343;
+            color: #fafeff;
+        }
+    }
+}

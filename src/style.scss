@@ -1,23 +1,24 @@
-@import './common/commonStylesheet.scss';
+@import "./common/commonStylesheet.scss";
 
-html{
-	// font-size: 14px;
-	font-size: 16px;  // not needed. This is the font size by default
-	body{
-		// height: 100rem;  // preset height for the contents. To be removed
-		background: #f6f8fd;
-		main{
-			// min-width: 100%;
-			// margin-left: auto;
-			// margin-right: auto;
-			// width: $width-middle;
-			// padding: 0 1rem;
-			position: absolute;
-			top: 0;
-			left: 0;
-			margin: 0;
-			padding: 0;
-			width: 100%;
-		}
-	}
+html {
+  // font-size: 14px;
+  font-size: 16px; // not needed. This is the font size by default
+  body {
+    // height: 100rem;  // preset height for the contents. To be removed
+    background: #f6f8fd;
+    width: 100%;
+    main {
+      // min-width: 100%;
+      // margin-left: auto;
+      // margin-right: auto;
+      // width: $width-middle;
+      // padding: 0 1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
 }

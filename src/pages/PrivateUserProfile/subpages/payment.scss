@@ -1,0 +1,107 @@
+.account_main_payment{
+    button{
+        padding: 6px 16px;
+        letter-spacing: .25px;
+        border-radius: 200px;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-weight: 500;
+        height: 40px;
+        border: 2px solid #74a541;
+        background-color: #7db343;
+        color: #fafeff;
+    }
+    &_header{
+        padding: 20px;
+        border-bottom: 1px solid #f6f8fd;
+        >h4{
+            color: #292b32;
+            font-size:19px;
+            font-weight: 500;
+            margin: 0px;
+        }
+        &--active{
+            border-bottom: 2px solid #008FB4;
+        }
+        >div{
+            margin: 20px;
+            height: 40px;
+
+            >a{
+                display: inline-block;
+                padding: 12px 0;
+                width: 150px;
+                h6{
+                    font-weight: 700;
+                    font-size: 0.8rem;
+                    text-align: center;
+                    color: #545a77;
+                }
+            }
+        }
+    }
+    &_body{
+        margin: 0 20px;
+        p{
+            padding-bottom: 30px;
+            color: #545a77;
+            font-size: 0.9rem;
+            line-height: 1.3rem;
+            
+        }
+        &_make{
+            div{
+                h7{
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    color: #545a77;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+                div{
+                    display: inline-flex;
+                    width: 42px;
+                    height: 26px;
+                    background: #ebebe5;
+                    justify-content: center;
+                    align-items: center;
+                }
+                span{
+                    color: #008fb4;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    padding-left: 20px;
+                    height: 26px;
+                    line-height: 26px;
+
+                }
+            }
+        }
+        &_receive{
+            h6{
+                margin-top: 15px;
+                padding: 20px 0;
+                font-weight: 700;
+                color: #545a77;
+                font-size: 14px;
+            }
+            label{
+                font-weight: 500;
+                color: #545a77;
+                font-size: 14px;
+            }
+            input{
+                width: 750px;
+                height: 40px;
+                border: 1px solid #bbc2dc;
+                border-radius: 4px;
+                margin-top: 5px;
+                padding: 0 4px;
+                font: 400 13.3333px Arial;
+            }
+        }
+    }
+}

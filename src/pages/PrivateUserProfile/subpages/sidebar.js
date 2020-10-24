@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
         <div className="account_sidebar_container">
           <div className="account_sidebar_container_avatar">
             <img src={avatar} alt="pending" />
-            <div>{firstName + ' ' + lastName} </div>
+            <div>{firstName?firstName: '' + ' ' + lastName? lastName: ''} </div>
           </div>
           <nav>
             <ul>
@@ -43,7 +43,7 @@ class Sidebar extends React.Component {
                 settings<span></span><span></span></li>
               {/* The page only shows either default or settings at one time */}
               <div className={this.state.showSettings ? "account_sidebar_container-showSetting" : "account_sidebar_container-hideSettings"}>
-                <NavLink to="/account/account"><li>account</li></NavLink>
+                <NavLink to="/account/profile"><li>account</li></NavLink>
                 <NavLink to="/account/skills"><li>skills</li></NavLink>
                 <NavLink to="/account/password"><li>password</li></NavLink>
               </div>

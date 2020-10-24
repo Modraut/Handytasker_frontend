@@ -57,6 +57,8 @@ class Login extends React.Component{
             userAPI.login({ email, password }).then(res=>{
                 console.log(res.token);
                 window.localStorage.setItem( 'jwtToken', res.token );
+                this.props.history.push(getReturnPath());
+                window.location.reload(true)
             }).catch(error=>{
                 this.setState({
                     incorrectCredential: true  // login failed due to wrong credential

@@ -1,0 +1,164 @@
+.account_main_payments-history{
+    padding: 20px;
+    button{
+        padding: 6px 16px;
+        letter-spacing: .25px;
+        border-radius: 200px;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-weight: 500;
+        height: 40px;
+        border: 1px solid rgba(223, 213, 213, 0.904) ;
+        background-color: rgba(233, 67, 109, 0.8);
+        color: #fafeff;
+        display: block;
+        margin: 0 auto;
+    }
+    &_header{
+        border-bottom: 1px solid #f6f8fd;
+        >h4{
+            color: #292b32;
+            font-size:19px;
+            font-weight: 500;
+            margin: 0px;
+        }
+        &--active{
+            border-bottom: 2px solid #008FB4;
+        }
+        >div{
+            margin: 20px 0;
+            height: 40px;
+            >a{
+                display: inline-block;
+                padding: 12px 0;
+                width: 100px;
+                h6{
+                    font-weight: 700;
+                    font-size: 0.8rem;
+                    text-align: center;
+                    color: #545a77;
+                }
+            }
+        }
+    }
+    &_body{
+        &_earned{
+            >span{
+                color: #545a77;
+                font-size: 0.9rem;
+                line-height: 1.3rem;
+                display: block;
+            }
+            select{
+                width: 300px;
+                height: 40px;
+                border: 1px solid #bbc2dc;
+                border-radius: 4px;
+                margin-top: 5px;
+                padding: 0 12px;
+                font: 400 13.3333px Arial;
+            }
+            >div:nth-child(3){
+                float: right;
+                h7{
+                    color: #545a77;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    display: block;
+                }
+                span{
+                    display: flex;
+                    justify-content: center;
+                    color: rgb(0, 143, 180);
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+            }
+            >div:last-child{
+                margin-top: 20px;
+                // background: #f6f8fd;
+                background: #f6f6f6;
+                >p:first-child{
+                    font-style: italic;
+                    font-size: 0.7rem;
+                    color: #545a77;
+                    font-weight: 500;
+                    padding: 5px 20px;
+                }
+                img{
+                    display: block;
+                    margin: 20px auto;
+                    width: 260px;
+                }
+                >p:nth-child(3){
+                    color: rgb(84, 90, 119);
+                    font-size: 0.9rem;
+                    padding: 20px 0;
+                    text-align: center;
+                }
+                >p:last-child{
+                    color: rgb(0, 143, 180);
+                    text-align: center;
+                }
+            }
+        }
+        &_outgoing{
+            >span{
+                color: #545a77;
+                font-size: 0.9rem;
+                line-height: 1.3rem;
+                display: block;
+            }
+            select{
+                width: 300px;
+                height: 40px;
+                border: 1px solid #bbc2dc;
+                border-radius: 4px;
+                margin-top: 5px;
+                padding: 0 12px;
+                font: 400 13.3333px Arial;
+            }
+            >div:nth-child(3){
+                float: right;
+                h7{
+                    color: #545a77;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    display: block;
+                }
+                span{
+                    display: flex;
+                    justify-content: center;
+                    color: rgb(0, 143, 180);
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+            }
+            >div:last-child{
+                margin-top: 20px;
+                background: #f6f8fd;
+                >p:first-child{
+                    font-style: italic;
+                    font-size: 0.7rem;
+                    color: #545a77;
+                    font-weight: 500;
+                    padding: 5px 20px;
+                }
+                img{
+                    display: block;
+                    margin: 20px auto;
+                    width: 260px;
+                }
+                >p:nth-child(4){
+                    color: rgb(84, 90, 119);
+                    font-size: 0.9rem;
+                    padding: 20px 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

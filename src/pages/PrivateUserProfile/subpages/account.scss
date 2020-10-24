@@ -1,0 +1,130 @@
+.account_main_account{
+    button{
+        padding: 6px 16px;
+        letter-spacing: .25px;
+        border-radius: 200px;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-weight: 500;
+        height: 40px;
+    }
+    >button{
+        margin: 20px;
+        padding: 6px 16px;
+        font-weight: 500;
+        background-color: #e75245;
+        border: 2px solid rgba(41,43,50,.1);
+        color: #fafeff;
+    }
+    &_header{
+        padding: 20px;
+        border-bottom: 1px solid #f6f8fd;
+        >h4{
+            color: #292b32;
+            font-size:19px;
+            font-weight: 500;
+            margin: 0px;
+            float:left;
+        }
+        >div{
+            float: right;
+            width: 212px;
+            &:nth-child(2){
+                color: #bbc2dc;
+                text-align: center;
+                font-size: 9px;
+                text-transform: uppercase;
+            }
+            &:last-child{
+                >div{
+                    float: left;
+                    width: 152px;
+                    height: 7px;
+                    border-radius: 100px;
+                    background: #7db343;
+                }
+            }
+        }
+    }
+    &_body{
+
+        border-bottom: 1px solid #f6f8fd;
+        padding: 20px;
+        label{
+            font-weight: 500;
+            color: #545a77;
+            font-size: 14px;
+        }
+        input{
+            width: 300px;
+            height: 40px;
+            border: 1px solid #bbc2dc;
+            border-radius: 3px;
+            margin-top: 5px;
+            padding: 0 4px;
+            font: 400 13.3333px Arial;
+            &[type=date]::-webkit-inner-spin-button { visibility: hidden; }
+        }
+        textarea{
+            width: 300px;
+            height: 60px;
+            border: 1px solid #bbc2dc;
+            border-radius: 3px;
+            margin-top: 5px;
+            padding: 0 4px;
+            font: 400 13.3333px Arial;
+        }
+
+        &_avatar{
+            >div{
+                height: 56px;
+                >img{
+                    float: left;
+                    width:50px;
+                    height: 50px;
+                    border-radius:5px;
+                }
+                >label{
+                    padding: 6px 16px;
+                    border-radius: 200px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    box-sizing: border-box;
+                    font-weight: 500;
+                    line-height: 40px;
+                    height: 40px;
+                    margin: 8px 0 8px 20px;
+                    border: 2px solid #74a541;
+                    background-color: #7db343;
+                    color: #fafeff;
+                    >input{
+                        display: none;
+                    }
+                }
+                >button{
+                    float: right;
+                    border: 2px solid rgba(41,43,50,.1);
+                    background-color: #f6f8fd;
+                    color: #008fb4;
+                }
+            }
+        }
+        &_checkbox{
+            >input{
+                width: 18px;
+                height: 18px;
+                background: #ffffff;
+            }
+        }
+        button:last-child{
+            border: 2px solid #74a541;
+            background-color: #7db343;
+            color: #fafeff;
+        }
+    }
+}
